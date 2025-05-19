@@ -7,27 +7,27 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    background: #1e1e2f;
+    background: #121224;
     color: #eee;
     margin: 0; padding: 0;
   }
   header {
     background: #3f51b5;
-    padding: 1rem;
+    padding: 1.5rem;
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
   }
   .controls {
-    margin: 1rem auto;
     max-width: 900px;
+    margin: 1rem auto;
     display: flex;
     gap: 1rem;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
   }
   select, input[type="search"] {
-    padding: 0.5rem;
+    padding: 0.6rem;
     font-size: 1rem;
     border-radius: 6px;
     border: none;
@@ -48,12 +48,13 @@
     gap: 1rem;
   }
   .game-card {
-    background: #2e2e4e;
+    background: #2c2c4a;
     border-radius: 8px;
     padding: 0.5rem;
     text-align: center;
     box-shadow: 0 0 6px #3f51b5aa;
-    transition: transform 0.2s ease;
+    transition: transform 0.15s ease;
+    cursor: pointer;
   }
   .game-card:hover {
     transform: scale(1.05);
@@ -66,6 +67,10 @@
     margin-top: 0.5rem;
     font-weight: bold;
   }
+  .game-category {
+    font-size: 0.85rem;
+    color: #b0b0d0;
+  }
   .pagination {
     text-align: center;
     margin-top: 1rem;
@@ -74,13 +79,13 @@
     background: #3f51b5;
     border: none;
     color: white;
-    padding: 0.5rem 1rem;
-    margin: 0 0.2rem;
+    padding: 0.5rem 0.9rem;
+    margin: 0 0.3rem;
     font-size: 1rem;
     border-radius: 6px;
     cursor: pointer;
   }
-  .pagination button[disabled] {
+  .pagination button:disabled {
     background: #888;
     cursor: not-allowed;
   }
@@ -103,26 +108,21 @@
 </div>
 
 <main>
-  <div class="games-grid" id="gamesGrid">
-    <!-- Game cards will be inserted here -->
-  </div>
-
-  <div class="pagination" id="pagination">
-    <!-- Pagination buttons go here -->
-  </div>
+  <div class="games-grid" id="gamesGrid"></div>
+  <div class="pagination" id="pagination"></div>
 </main>
 
 <script>
-  // Sample 100 games with categories and placeholder images
-  const games = [];
+  // Create 100 sample games with categories
   const categories = ['Action', 'Puzzle', 'Adventure', 'Strategy', 'Sports'];
+  const games = [];
 
   for(let i=1; i<=100; i++) {
     games.push({
       id: i,
       title: `Game ${i}`,
       category: categories[i % categories.length],
-      img: 'https://via.placeholder.com/150?text=Game+' + i,
+      img: `https://via.placeholder.com/150?text=Game+${i}`,
       link: '#'
     });
   }
@@ -139,17 +139,17 @@
   function renderGames() {
     gamesGrid.innerHTML = '';
 
-    const start = (currentPage -1) * gamesPerPage;
+    const start = (currentPage - 1) * gamesPerPage;
     const end = start + gamesPerPage;
     const gamesToShow = filteredGames.slice(start, end);
 
-    if(gamesToShow.length === 0){
+    if (gamesToShow.length === 0) {
       gamesGrid.innerHTML = '<p>No games found.</p>';
       paginationDiv.innerHTML = '';
       return;
     }
 
-    for(const game of gamesToShow) {
+    for (const game of gamesToShow) {
       const card = document.createElement('a');
       card.href = game.link;
       card.className = 'game-card';
@@ -160,6 +160,7 @@
       `;
       gamesGrid.appendChild(card);
     }
+
     renderPagination();
   }
 
@@ -167,7 +168,7 @@
     paginationDiv.innerHTML = '';
     const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
 
-    // Previous button
+    // Previous Button
     const prevBtn = document.createElement('button');
     prevBtn.textContent = 'Prev';
     prevBtn.disabled = currentPage === 1;
@@ -177,18 +178,18 @@
     };
     paginationDiv.appendChild(prevBtn);
 
-    // Page numbers (show max 5 page numbers)
+    // Page numbers - show max 5 pages
     let startPage = Math.max(1, currentPage - 2);
     let endPage = Math.min(totalPages, startPage + 4);
 
-    if(endPage - startPage < 4) {
+    if (endPage - startPage < 4) {
       startPage = Math.max(1, endPage - 4);
     }
 
-    for(let i = startPage; i <= endPage; i++) {
+    for (let i = startPage; i <= endPage; i++) {
       const pageBtn = document.createElement('button');
       pageBtn.textContent = i;
-      if(i === currentPage) {
+      if (i === currentPage) {
         pageBtn.disabled = true;
       }
       pageBtn.onclick = () => {
@@ -198,7 +199,7 @@
       paginationDiv.appendChild(pageBtn);
     }
 
-    // Next button
+    // Next Button
     const nextBtn = document.createElement('button');
     nextBtn.textContent = 'Next';
     nextBtn.disabled = currentPage === totalPages;
