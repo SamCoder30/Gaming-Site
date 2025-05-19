@@ -1,128 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GamesHub</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #4e54c8, #8f94fb);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    header h1 {
-      font-size: 3rem;
-      margin: 0;
-      text-shadow: 2px 2px 4px #0008;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #ddd;
-    }
-    main {
-      width: 100%;
-      max-width: 960px;
-      flex: 1;
-    }
-    main h2 {
-      margin-bottom: 10px;
-      text-align: center;
-      text-shadow: 1px 1px 2px #0008;
-    }
-    #gameSearch {
-      width: 100%;
-      max-width: 400px;
-      padding: 8px;
-      margin: 0 auto 20px auto;
-      display: block;
-      border-radius: 6px;
-      border: none;
-      font-size: 1rem;
-      box-shadow: 0 0 8px rgba(255,255,255,0.3);
-    }
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-    }
-    .game-card {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 12px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px #0004;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      user-select: none;
-    }
-    .game-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px #0008;
-    }
-    .game-card a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      display: block;
-      margin-top: 8px;
-    }
-    footer {
-      margin-top: 30px;
-      font-size: 0.9rem;
-      color: #ccc;
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GamesHub by SamCoder30</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #1e1e2f;
+    color: #eee;
+    margin: 0; padding: 0;
+  }
+  header {
+    background: #3f51b5;
+    padding: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .controls {
+    margin: 1rem auto;
+    max-width: 900px;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  select, input[type="search"] {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+  }
+  input[type="search"] {
+    flex-grow: 1;
+    min-width: 200px;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+  }
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+    gap: 1rem;
+  }
+  .game-card {
+    background: #2e2e4e;
+    border-radius: 8px;
+    padding: 0.5rem;
+    text-align: center;
+    box-shadow: 0 0 6px #3f51b5aa;
+    transition: transform 0.2s ease;
+  }
+  .game-card:hover {
+    transform: scale(1.05);
+  }
+  .game-card img {
+    max-width: 100%;
+    border-radius: 6px;
+  }
+  .game-title {
+    margin-top: 0.5rem;
+    font-weight: bold;
+  }
+  .pagination {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .pagination button {
+    background: #3f51b5;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin: 0 0.2rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .pagination button[disabled] {
+    background: #888;
+    cursor: not-allowed;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>GamesHub</h1>
-    <p>Play Your Favorite Online Games for Free!</p>
-  </header>
-  <main>
-    <h2>20+ Online Games</h2>
-    <input type="text" id="gameSearch" placeholder="Search games..." />
-    <div class="games-grid">
-      <div class="game-card">Tic Tac Toe
-        <a href="https://example.com/tic-tac-toe" target="_blank" rel="noopener">Play</a>
-      </div>
-      <div class="game-card">2048
-        <a href="https://example.com/2048" target="_blank" rel="noopener">Play</a>
-      </div>
-      <div class="game-card">Snake
-        <a href="https://example.com/snake" target="_blank" rel="noopener">Play</a>
-      </div>
-      <div class="game-card">Flappy Bird
-        <a href="https://example.com/flappy-bird" target="_blank" rel="noopener">Play</a>
-      </div>
-      <!-- Add more games here -->
-    </div>
-  </main>
-  <footer>
-    &copy; 2025 GamesHub. All rights reserved.
-  </footer>
 
-  <script>
-    const searchInput = document.getElementById('gameSearch');
-    const gameCards = document.querySelectorAll('.game-card');
+<header>GamesHub by SamCoder30</header>
 
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase();
-      gameCards.forEach(card => {
-        const gameName = card.textContent.toLowerCase();
-        card.style.display = gameName.includes(query) ? 'block' : 'none';
-      });
+<div class="controls">
+  <select id="categoryFilter">
+    <option value="all">All Categories</option>
+    <option value="Action">Action</option>
+    <option value="Puzzle">Puzzle</option>
+    <option value="Adventure">Adventure</option>
+    <option value="Strategy">Strategy</option>
+    <option value="Sports">Sports</option>
+  </select>
+  <input type="search" id="searchBox" placeholder="Search games..." />
+</div>
+
+<main>
+  <div class="games-grid" id="gamesGrid">
+    <!-- Game cards will be inserted here -->
+  </div>
+
+  <div class="pagination" id="pagination">
+    <!-- Pagination buttons go here -->
+  </div>
+</main>
+
+<script>
+  // Sample 100 games with categories and placeholder images
+  const games = [];
+  const categories = ['Action', 'Puzzle', 'Adventure', 'Strategy', 'Sports'];
+
+  for(let i=1; i<=100; i++) {
+    games.push({
+      id: i,
+      title: `Game ${i}`,
+      category: categories[i % categories.length],
+      img: 'https://via.placeholder.com/150?text=Game+' + i,
+      link: '#'
     });
-  </script>
+  }
+
+  const gamesGrid = document.getElementById('gamesGrid');
+  const categoryFilter = document.getElementById('categoryFilter');
+  const searchBox = document.getElementById('searchBox');
+  const paginationDiv = document.getElementById('pagination');
+
+  const gamesPerPage = 20;
+  let currentPage = 1;
+  let filteredGames = [...games];
+
+  function renderGames() {
+    gamesGrid.innerHTML = '';
+
+    const start = (currentPage -1) * gamesPerPage;
+    const end = start + gamesPerPage;
+    const gamesToShow = filteredGames.slice(start, end);
+
+    if(gamesToShow.length === 0){
+      gamesGrid.innerHTML = '<p>No games found.</p>';
+      paginationDiv.innerHTML = '';
+      return;
+    }
+
+    for(const game of gamesToShow) {
+      const card = document.createElement('a');
+      card.href = game.link;
+      card.className = 'game-card';
+      card.innerHTML = `
+        <img src="${game.img}" alt="${game.title}" />
+        <div class="game-title">${game.title}</div>
+        <div class="game-category">${game.category}</div>
+      `;
+      gamesGrid.appendChild(card);
+    }
+    renderPagination();
+  }
+
+  function renderPagination() {
+    paginationDiv.innerHTML = '';
+    const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
+
+    // Previous button
+    const prevBtn = document.createElement('button');
+    prevBtn.textContent = 'Prev';
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.onclick = () => {
+      currentPage--;
+      renderGames();
+    };
+    paginationDiv.appendChild(prevBtn);
+
+    // Page numbers (show max 5 page numbers)
+    let startPage = Math.max(1, currentPage - 2);
+    let endPage = Math.min(totalPages, startPage + 4);
+
+    if(endPage - startPage < 4) {
+      startPage = Math.max(1, endPage - 4);
+    }
+
+    for(let i = startPage; i <= endPage; i++) {
+      const pageBtn = document.createElement('button');
+      pageBtn.textContent = i;
+      if(i === currentPage) {
+        pageBtn.disabled = true;
+      }
+      pageBtn.onclick = () => {
+        currentPage = i;
+        renderGames();
+      };
+      paginationDiv.appendChild(pageBtn);
+    }
+
+    // Next button
+    const nextBtn = document.createElement('button');
+    nextBtn.textContent = 'Next';
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.onclick = () => {
+      currentPage++;
+      renderGames();
+    };
+    paginationDiv.appendChild(nextBtn);
+  }
+
+  function filterGames() {
+    const selectedCategory = categoryFilter.value;
+    const searchTerm = searchBox.value.toLowerCase();
+
+    filteredGames = games.filter(game => {
+      const matchCategory = selectedCategory === 'all' || game.category === selectedCategory;
+      const matchSearch = game.title.toLowerCase().includes(searchTerm);
+      return matchCategory && matchSearch;
+    });
+
+    currentPage = 1;
+    renderGames();
+  }
+
+  categoryFilter.addEventListener('change', filterGames);
+  searchBox.addEventListener('input', filterGames);
+
+  // Initial render
+  renderGames();
+</script>
+
 </body>
 </html>
