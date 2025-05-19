@@ -1,235 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>GamesHub by SamCoder30</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #121224;
-    color: #eee;
-    margin: 0; padding: 0;
-  }
-  header {
-    background: #3f51b5;
-    padding: 1.5rem;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-  }
-  .controls {
-    max-width: 900px;
-    margin: 1rem auto;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  select, input[type="search"] {
-    padding: 0.6rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: none;
-    outline: none;
-  }
-  input[type="search"] {
-    flex-grow: 1;
-    min-width: 200px;
-  }
-  main {
-    max-width: 900px;
-    margin: 0 auto 2rem;
-    padding: 0 1rem;
-  }
-  .games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
-    gap: 1rem;
-  }
-  .game-card {
-    background: #2c2c4a;
-    border-radius: 8px;
-    padding: 0.5rem;
-    text-align: center;
-    box-shadow: 0 0 6px #3f51b5aa;
-    transition: transform 0.15s ease;
-    cursor: pointer;
-  }
-  .game-card:hover {
-    transform: scale(1.05);
-  }
-  .game-card img {
-    max-width: 100%;
-    border-radius: 6px;
-  }
-  .game-title {
-    margin-top: 0.5rem;
-    font-weight: bold;
-  }
-  .game-category {
-    font-size: 0.85rem;
-    color: #b0b0d0;
-  }
-  .pagination {
-    text-align: center;
-    margin-top: 1rem;
-  }
-  .pagination button {
-    background: #3f51b5;
-    border: none;
-    color: white;
-    padding: 0.5rem 0.9rem;
-    margin: 0 0.3rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  .pagination button:disabled {
-    background: #888;
-    cursor: not-allowed;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GamesHub - Play Free Online Games</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      color: #4caf50;
+    }
+    .games-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+    .game {
+      background: #222;
+      border-radius: 8px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 0 10px #4caf50;
+      transition: transform 0.2s;
+    }
+    .game:hover {
+      transform: scale(1.05);
+    }
+    .game img {
+      width: 180px;
+      height: 100px;
+      margin: 10px auto;
+      display: block;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+    .game h3 {
+      margin: 10px 0;
+      color: #4caf50;
+      font-size: 1.1em;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-
-<header>GamesHub by SamCoder30</header>
-
-<div class="controls">
-  <select id="categoryFilter">
-    <option value="all">All Categories</option>
-    <option value="Action">Action</option>
-    <option value="Puzzle">Puzzle</option>
-    <option value="Adventure">Adventure</option>
-    <option value="Strategy">Strategy</option>
-    <option value="Sports">Sports</option>
-  </select>
-  <input type="search" id="searchBox" placeholder="Search games..." />
-</div>
-
-<main>
-  <div class="games-grid" id="gamesGrid"></div>
-  <div class="pagination" id="pagination"></div>
-</main>
-
-<script>
-  // Create 100 sample games with categories
-  const categories = ['Action', 'Puzzle', 'Adventure', 'Strategy', 'Sports'];
-  const games = [];
-
-  for(let i=1; i<=100; i++) {
-    games.push({
-      id: i,
-      title: `Game ${i}`,
-      category: categories[i % categories.length],
-      img: `https://via.placeholder.com/150?text=Game+${i}`,
-      link: '#'
-    });
-  }
-
-  const gamesGrid = document.getElementById('gamesGrid');
-  const categoryFilter = document.getElementById('categoryFilter');
-  const searchBox = document.getElementById('searchBox');
-  const paginationDiv = document.getElementById('pagination');
-
-  const gamesPerPage = 20;
-  let currentPage = 1;
-  let filteredGames = [...games];
-
-  function renderGames() {
-    gamesGrid.innerHTML = '';
-
-    const start = (currentPage - 1) * gamesPerPage;
-    const end = start + gamesPerPage;
-    const gamesToShow = filteredGames.slice(start, end);
-
-    if (gamesToShow.length === 0) {
-      gamesGrid.innerHTML = '<p>No games found.</p>';
-      paginationDiv.innerHTML = '';
-      return;
-    }
-
-    for (const game of gamesToShow) {
-      const card = document.createElement('a');
-      card.href = game.link;
-      card.className = 'game-card';
-      card.innerHTML = `
-        <img src="${game.img}" alt="${game.title}" />
-        <div class="game-title">${game.title}</div>
-        <div class="game-category">${game.category}</div>
-      `;
-      gamesGrid.appendChild(card);
-    }
-
-    renderPagination();
-  }
-
-  function renderPagination() {
-    paginationDiv.innerHTML = '';
-    const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
-
-    // Previous Button
-    const prevBtn = document.createElement('button');
-    prevBtn.textContent = 'Prev';
-    prevBtn.disabled = currentPage === 1;
-    prevBtn.onclick = () => {
-      currentPage--;
-      renderGames();
-    };
-    paginationDiv.appendChild(prevBtn);
-
-    // Page numbers - show max 5 pages
-    let startPage = Math.max(1, currentPage - 2);
-    let endPage = Math.min(totalPages, startPage + 4);
-
-    if (endPage - startPage < 4) {
-      startPage = Math.max(1, endPage - 4);
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      const pageBtn = document.createElement('button');
-      pageBtn.textContent = i;
-      if (i === currentPage) {
-        pageBtn.disabled = true;
-      }
-      pageBtn.onclick = () => {
-        currentPage = i;
-        renderGames();
-      };
-      paginationDiv.appendChild(pageBtn);
-    }
-
-    // Next Button
-    const nextBtn = document.createElement('button');
-    nextBtn.textContent = 'Next';
-    nextBtn.disabled = currentPage === totalPages;
-    nextBtn.onclick = () => {
-      currentPage++;
-      renderGames();
-    };
-    paginationDiv.appendChild(nextBtn);
-  }
-
-  function filterGames() {
-    const selectedCategory = categoryFilter.value;
-    const searchTerm = searchBox.value.toLowerCase();
-
-    filteredGames = games.filter(game => {
-      const matchCategory = selectedCategory === 'all' || game.category === selectedCategory;
-      const matchSearch = game.title.toLowerCase().includes(searchTerm);
-      return matchCategory && matchSearch;
-    });
-
-    currentPage = 1;
-    renderGames();
-  }
-
-  categoryFilter.addEventListener('change', filterGames);
-  searchBox.addEventListener('input', filterGames);
-
-  // Initial render
-  renderGames();
-</script>
-
+  <header>GamesHub - Play Free Online Games</header>
+  <div class="games-container">
+    <div class="game">
+      <a href="https://www.miniclip.com/games/en/" target="_blank" rel="noopener noreferrer">
+        <img src="https://www.miniclip.com/favicon.ico" alt="Miniclip Games" />
+        <h3>Miniclip Games</h3>
+      </a>
+    </div>
+    <div class="game">
+      <a href="https://www.crazygames.com/" target="_blank" rel="noopener noreferrer">
+        <img src="https://www.crazygames.com/favicon.ico" alt="CrazyGames" />
+        <h3>CrazyGames</h3>
+      </a>
+    </div>
+    <div class="game">
+      <a href="https://www.kongregate.com/" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn.kongregate.com/images/kongregate_favicon.ico" alt="Kongregate" />
+        <h3>Kongregate</h3>
+      </a>
+    </div>
+    <div class="game">
+      <a href="https://poki.com/" target="_blank" rel="noopener noreferrer">
+        <img src="https://poki.com/favicon.ico" alt="Poki" />
+        <h3>Poki</h3>
+      </a>
+    </div>
+  </div>
 </body>
 </html>
