@@ -3,368 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Gaming Website</title>
+  <title>GamesHub - Play 20+ Online Games</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #121212; color: #eee; margin: 0; padding: 20px; }
-    header { text-align: center; margin-bottom: 30px; }
-    h1 { color: #4CAF50; }
-    .game-list { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-    .game { background: #222; padding: 15px; border-radius: 8px; width: 200px; text-align: center; }
-    .game iframe { width: 100%; height: 150px; border: none; border-radius: 6px; }
-    a { color: #4CAF50; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #1f1f1f;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+      user-select: none;
+    }
+    header svg {
+      width: 40px;
+      height: 40px;
+      fill: #4CAF50;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #4CAF50;
+    }
+    main {
+      flex: 1;
+      padding: 20px 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #4CAF50;
+      user-select: none;
+    }
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 15px;
+    }
+    .game-card {
+      background: #222;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    .game-card:hover {
+      background-color: #333;
+    }
+    .game-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: contain;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      background: #000;
+    }
+    .game-card a {
+      color: #eee;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: block;
+    }
+    .game-card a:hover {
+      color: #4CAF50;
+    }
+    footer {
+      background: #1f1f1f;
+      text-align: center;
+      padding: 15px 0;
+      color: #777;
+      font-size: 0.9rem;
+      user-select: none;
+      margin-top: auto;
+    }
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+      .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+      }
+      .game-card img {
+        height: 80px;
+      }
+    }
   </style>
-</head>
-<body>
-  <header>
-    <h1>Welcome to My Gaming Website</h1>
-    <p>Play some cool games below!</p>
-  </header>
-  <main>
-    <div class="game-list">
-      <div class="game">
-        <h3>2048</h3>
-        <iframe src="https://play2048.co/" title="2048 Game"></iframe>
-        <a href="https://play2048.co/" target="_blank">Open in new tab</a>
-      </div>
-      <div class="game">
-        <h3>Flappy Bird</h3>
-        <iframe src="https://flappybird.io/" title="Flappy Bird Game"></iframe>
-        <a href="https://flappybird.io/" target="_blank">Open in new tab</a>
-      </div>
-      <div class="game">
-        <h3>Snake</h3>
-        <iframe src="https://playsnake.org/" title="Snake Game"></iframe>
-        <a href="https://playsnake.org/" target="_blank">Open in new tab</a>
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>GamesHub - Play 100+ Online Games</title>
-<style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #121212;
-    color: #eee;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background: #1f1f1f;
-    padding: 15px 30px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.7);
-    user-select: none;
-  }
-  header svg {
-    width: 40px;
-    height: 40px;
-    fill: #4CAF50;
-  }
-  header h1 {
-    margin: 0;
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #4CAF50;
-  }
-  main {
-    flex: 1;
-    padding: 20px 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  h2 {
-    margin-bottom: 20px;
-    color: #4CAF50;
-    user-select: none;
-  }
-  .games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 15px;
-  }
-  .game-card {
-    background: #222;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-  }
-  .game-card:hover {
-    background-color: #333;
-  }
-  .game-card img {
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 8px;
-  }
-  .game-card a {
-    color: #eee;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.9rem;
-    display: block;
-  }
-  .game-card a:hover {
-    color: #4CAF50;
-  }
-  footer {
-    background: #1f1f1f;
-    text-align: center;
-    padding: 15px 0;
-    color: #777;
-    font-size: 0.9rem;
-    user-select: none;
-    margin-top: auto;
-  }
-  @media (max-width: 480px) {
-    header h1 {
-      font-size: 1.4rem;
-    }
-    .games-grid {
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 10px;
-    }
-    .game-card img {
-      height: 80px;
-    }
-  }
-</style>
-</head>
-<body>
-<header>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M52 20h-5v-5a3 3 0 0 0-6 0v5h-5a3 3 0 0 0 0 6h5v5a3 3 0 0 0 6 0v-5h5a3 3 0 0 0 0-6Zm-27.17 5H18a6 6 0 0 0-6 6v6a6 6 0 0 0 6 6h6.83a10 10 0 1 0 0-18Zm-1.83 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4Zm12.86-8a10.06 10.06 0 0 0-6.94-2.88A10 10 0 0 0 20 38a10 10 0 0 0 10 10 10.06 10.06 0 0 0 6.94-2.88Z"/></svg>
-  <h1>GamesHub</h1>
-</header>
-<main>
-  <h2>100+ Online Games</h2>
-  <div class="games-grid">
-
-    <!-- Sample game cards -->
-    <div class="game-card">
-      <a href="https://play2048.co/" target="_blank" rel="noopener noreferrer">
-        <img src="https://play2048.co/assets/images/2048.png" alt="2048" />
-        2048
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://flappybird.io/" target="_blank" rel="noopener noreferrer">
-        <img src="https://flappybird.io/favicon.ico" alt="Flappy Bird" />
-        Flappy Bird
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://playsnake.org/" target="_blank" rel="noopener noreferrer">
-        <img src="https://playsnake.org/favicon.ico" alt="Snake" />
-        Snake
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://agar.io/" target="_blank" rel="noopener noreferrer">
-        <img src="https://agar.io/favicon.ico" alt="Agar.io" />
-        Agar.io
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://slither.io/" target="_blank" rel="noopener noreferrer">
-        <img src="https://slither.io/favicon.ico" alt="Slither.io" />
-        Slither.io
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://shellshock.io/" target="_blank" rel="noopener noreferrer">
-        <img src="https://shellshock.io/favicon.ico" alt="ShellShock.io" />
-        ShellShock.io
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://krunker.io/" target="_blank" rel="noopener noreferrer">
-        <img src="https://krunker.io/favicon.ico" alt="Krunker.io" />
-        Krunker.io
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://littlealchemy.com/" target="_blank" rel="noopener noreferrer">
-        <img src="https://littlealchemy.com/favicon.ico" alt="Little Alchemy" />
-        Little Alchemy
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://catanuniverse.com/en/play" target="_blank" rel="noopener noreferrer">
-        <img src="https://catanuniverse.com/favicon.ico" alt="Catan Universe" />
-        Catan Universe
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://www.miniclip.com/games/en/" target="_blank" rel="noopener noreferrer">
-        <img src="https://www.miniclip.com/favicon.ico" alt="Miniclip" />
-        Miniclip
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://www.coolmathgames.com/" target="_blank" rel="noopener noreferrer">
-        <img src="https://www.coolmathgames.com/favicon.ico" alt="Cool Math Games" />
-        Cool Math Games
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://www.pogo.com/" target="_blank" rel="noopener noreferrer">
-        <img src="https://www.pogo.com/favicon.ico" alt="Pogo Games" />
-        Pogo Games
-      </a>
-    </div>
-<script>
-      const games = [
-        {name:"Google Pacman", url:"https://www.google.com/search?q=google+pacman+game", img:"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"},
-        {name:"Tetris", url:"https://tetris.com/play-tetris", img:"https://tetris.com/favicon.ico"},
-        {name:"Chess", url:"https://www.chess.com/play/computer", img:"https://www.chess.com/favicon.ico"},
-        {name:"Bubble Shooter", url:"https://www.bubbleshooter.net/", img:"https://www.bubbleshooter.net/favicon.ico"},
-        {name:"Solitaire", url:"https://www.solitr.com/", img:"https://www.solitr.com/favicon.ico"},
-        {name:"Crossy Road", url:"https://crossyroad.com/", img:"https://crossyroad.com/favicon.ico"},
-        {name:"Among Us Online", url:"https://among-us.io/", img:"https://among-us.io/favicon.ico"},
-        {name:"Minecraft Classic", url:"https://classic.minecraft.net/", img:"https://classic.minecraft.net/favicon.ico"},
-        {name:"Pacman", url:"https://www.google.com/search?q=pacman+game", img:"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"},
-        {name:"Super Mario Bros", url:"https://supermariobros.io/", img:"https://supermariobros.io/favicon.ico"},
-        {name:"Wordle", url:"https://www.nytimes.com/games/wordle/index.html", img:"https://static01.nyt.com/favicon.ico"},
-        {name:"Doodle Jump", url:"https://doodlejump.io/", img:"https://doodlejump.io/favicon.ico"},
-        {name:"Pacman", url:"https://www.retrogames.cc/arcade-games/pac-man.html", img:"https://www.retrogames.cc/favicon.ico"},
-        {name:"Fortnite", url:"https://www.epicgames.com/fortnite/en-US/home", img:"https://www.epicgames.com/favicon.ico"},
-        {name:"Mario Kart Tour", url:"https://mariokarttour.com/", img:"https://mariokarttour.com/favicon.ico"},
-        {name:"Super Smash Flash 2", url:"https://www.superflashbros.net/games/super-smash-flash-2/", img:"https://www.superflashbros.net/favicon.ico"},
-        {name:"Plants vs Zombies", url:"https://www.ea.com/games/plants-vs-zombies/plants-vs-zombies-2", img:"https://www.ea.com/favicon.ico"},
-        {name:"Candy Crush Saga", url:"https://king.com/game/candycrush", img:"https://king.com/favicon.ico"},
-        {name:"Subway Surfers", url:"https://www.subwaysurfers.com/", img:"https://www.subwaysurfers.com/favicon.ico"},
-        {name:"Angry Birds", url:"https://www.angrybirds.com/", img:"https://www.angrybirds.com/favicon.ico"}
-        // Add more games if you want, just expand this array!
-      ];
-
-      const container = document.currentScript.parentElement;
-      games.forEach(game => {
-        const div = document.createElement('div');
-        div.className = 'game-card';
-        div.innerHTML = `<a href="${game.url}" target="_blank" rel="noopener noreferrer"><img src="${game.img}" alt="${game.name}" onerror="this.style.display='none'"/><span
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>GamesHub - Play 20+ Online Games</title>
-<style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #121212;
-    color: #eee;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background: #1f1f1f;
-    padding: 15px 30px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.7);
-    user-select: none;
-  }
-  header svg {
-    width: 40px;
-    height: 40px;
-    fill: #4CAF50;
-  }
-  header h1 {
-    margin: 0;
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #4CAF50;
-  }
-  main {
-    flex: 1;
-    padding: 20px 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  h2 {
-    margin-bottom: 20px;
-    color: #4CAF50;
-    user-select: none;
-  }
-  .games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 15px;
-  }
-  .game-card {
-    background: #222;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-  }
-  .game-card:hover {
-    background-color: #333;
-  }
-  .game-card img {
-    width: 100%;
-    height: 100px;
-    object-fit: contain;
-    border-radius: 6px;
-    margin-bottom: 8px;
-    background: #000;
-  }
-  .game-card a {
-    color: #eee;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.9rem;
-    display: block;
-  }
-  .game-card a:hover {
-    color: #4CAF50;
-  }
-  footer {
-    background: #1f1f1f;
-    text-align: center;
-    padding: 15px 0;
-    color: #777;
-    font-size: 0.9rem;
-    user-select: none;
-    margin-top: auto;
-  }
-  @media (max-width: 480px) {
-    header h1 {
-      font-size: 1.4rem;
-    }
-    .games-grid {
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 10px;
-    }
-    .game-card img {
-      height: 80px;
-    }
-  }
-</style>
 </head>
 <body>
 <header>
@@ -374,282 +110,70 @@
 <main>
   <h2>20+ Online Games</h2>
   <div class="games-grid">
-
     <div class="game-card">
       <a href="https://play2048.co/" target="_blank" rel="noopener noreferrer">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/2048_logo.svg" alt="2048" />
         2048
       </a>
     </div>
-
     <div class="game-card">
       <a href="https://flappybird.io/" target="_blank" rel="noopener noreferrer">
         <img src="https://upload.wikimedia.org/wikipedia/en/0/02/Flappy_Bird_icon.png" alt="Flappy Bird" />
         Flappy Bird
       </a>
     </div>
-
     <div class="game-card">
       <a href="https://playsnake.org/" target="_blank" rel="noopener noreferrer">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Snake_icon.svg" alt="Snake" />
         Snake
       </a>
     </div>
-
     <div class="game-card">
       <a href="https://agar.io/" target="_blank" rel="noopener noreferrer">
         <img src="https://upload.wikimedia.org/wikipedia/en/6/62/Agar.io_logo.png" alt="Agar.io" />
         Agar.io
       </a>
     </div>
-
     <div class="game-card">
       <a href="https://slither.io/" target="_blank" rel="noopener noreferrer">
         <img src="https://upload.wikimedia.org/wikipedia/en/6/6c/Slither.io_logo.png" alt="Slither.io" />
         Slither.io
       </a>
     </div>
-
     <div class="game-card">
       <a href="https://shellshock.io/" target="_blank" rel="noopener noreferrer">
         <img src="https://static.shellshock.io/favicon.ico" alt="ShellShock.io" />
         ShellShock.io
       </a>
     </div>
-
     <div class="game-card">
       <a href="https://krunker.io/" target="_blank" rel="noopener noreferrer">
         <img src="https://krunker.io/favicon.ico" alt="Krunker.io" />
         Krunker.io
       </a>
     </div>
-
     <div class="game-card">
       <a href="https://littlealchemy.com/" target="_blank" rel="noopener noreferrer">
         <img src="https://littlealchemy.com/favicon.ico" alt="Little Alchemy" />
         Little Alchemy
       </a>
     </div>
-
     <div class="game-card">
       <a href="https://catanuniverse.com/en/play" target="_blank" rel="noopener noreferrer">
         <img src="https://catanuniverse.com/favicon.ico" alt="Catan Universe" />
         Catan Universe
       </a>
     </div>
-
     <div class="game-card">
       <a href="https://www.miniclip.com/games/en/" target="_blank" rel="noopener noreferrer">
         <img src="https://www.miniclip.com/favicon.ico" alt="Miniclip" />
         Miniclip
       </a>
     </div>
-
-    <div class="game-card">
-      <a href="https://www.coolmathgames.com/" target="_blank" rel="noopener noreferrer">
-        <img src="https://www.coolmathgames.com/favicon.ico" alt="Cool Math Games" />
-        Cool Math Games
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://www.pogo.com/" target="_blank" rel="noopener noreferrer">
-        <img src="https://www.pogo.com/favicon.ico" alt="Pogo Games" />
-        Pogo Games
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://www.google.com/search?q=google+pacman+game" target="_blank" rel="noopener noreferrer">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Pacman.svg" alt="Google Pacman" />
-        Google Pacman
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://tetris.com/play-tetris" target="_blank" rel="noopener noreferrer">
-        <img src="https://tetris.com/favicon.ico" alt="Tetris" />
-        Tetris
-      </a>
-    </div>
-
-    <div class="game-card">
-      <a href="https://www.chess.com/play/computer" target="_blank" rel="noopener noreferrer">
-        <img src="https://www.chess.com/favicon.ico" alt="Chess" />
-        Chess
-        
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GamesHub - Play Games Online</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #121212;
-      color: #fff;
-    }
-    header {
-      background: #1f1f1f;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.6);
-    }
-    header h1 {
-      color: #4caf50;
-      margin: 0;
-      font-size: 2rem;
-    }
-    .search-bar {
-      margin: 20px auto;
-      text-align: center;
-    }
-    .search-bar input {
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: none;
-    }
-    .category-filters {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .category-filters button {
-      background: #2a2a2a;
-      color: #fff;
-      border: none;
-      margin: 5px;
-      padding: 10px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .category-filters button.active,
-    .category-filters button:hover {
-      background: #4caf50;
-    }
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 15px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .game-card {
-      background: #1e1e1e;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-      transition: transform 0.2s ease;
-    }
-    .game-card:hover {
-      transform: scale(1.03);
-    }
-    .game-card img {
-      width: 100%;
-      height: 100px;
-      object-fit: contain;
-      background: #000;
-      border-radius: 6px;
-      margin-bottom: 10px;
-    }
-    .game-card a {
-      color: #fff;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    footer {
-      background: #1f1f1f;
-      padding: 15px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>GamesHub</h1>
-  </header>
-
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search games...">
   </div>
-
-  <div class="category-filters">
-    <button class="filter-btn active" data-category="all">All</button>
-    <button class="filter-btn" data-category="puzzle">Puzzle</button>
-    <button class="filter-btn" data-category="action">Action</button>
-    <button class="filter-btn" data-category="classic">Classic</button>
-    <button class="filter-btn" data-category="multiplayer">Multiplayer</button>
-  </div>
-
-  <div class="games-grid" id="gamesGrid">
-    <!-- Game cards inserted by JavaScript -->
-  </div>
-
-  <footer>
-    &copy; 2025 GamesHub. All rights reserved.
-  </footer>
-
-  <script>
-    const games = [
-      { title: "2048", url: "https://play2048.co/", img: "https://upload.wikimedia.org/wikipedia/commons/5/57/2048_logo.svg", category: "puzzle" },
-      { title: "Flappy Bird", url: "https://flappybird.io/", img: "https://upload.wikimedia.org/wikipedia/en/0/02/Flappy_Bird_icon.png", category: "action" },
-      { title: "Snake", url: "https://playsnake.org/", img: "https://upload.wikimedia.org/wikipedia/commons/4/49/Snake_icon.svg", category: "classic" },
-      { title: "Agar.io", url: "https://agar.io/", img: "https://upload.wikimedia.org/wikipedia/en/6/62/Agar.io_logo.png", category: "multiplayer" },
-      { title: "Slither.io", url: "https://slither.io/", img: "https://upload.wikimedia.org/wikipedia/en/6/6c/Slither.io_logo.png", category: "multiplayer" },
-      { title: "Tetris", url: "https://tetris.com/play-tetris", img: "https://tetris.com/favicon.ico", category: "classic" },
-      { title: "Chess", url: "https://www.chess.com/play/computer", img: "https://www.chess.com/bundles/web/images/favicon.ico", category: "puzzle" },
-      { title: "ShellShock.io", url: "https://shellshock.io/", img: "https://static.shellshock.io/favicon.ico", category: "action" },
-      { title: "HexGL", url: "https://hexgl.bkcore.com/play/", img: "https://hexgl.bkcore.com/images/icon-144.png", category: "action" },
-      { title: "Pacman", url: "https://www.google.com/logos/2010/pacman10-i.html", img: "https://upload.wikimedia.org/wikipedia/en/5/59/Pac-man.png", category: "classic" }
-    ];
-
-    const grid = document.getElementById('gamesGrid');
-    const searchInput = document.getElementById('searchInput');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-
-    function displayGames(filter = "all", search = "") {
-      grid.innerHTML = "";
-      const filtered = games.filter(game => {
-        const matchesCategory = filter === "all" || game.category === filter;
-        const matchesSearch = game.title.toLowerCase().includes(search.toLowerCase());
-        return matchesCategory && matchesSearch;
-      });
-      for (const game of filtered) {
-        const card = document.createElement("div");
-        card.className = "game-card";
-        card.innerHTML = `
-          <a href="${game.url}" target="_blank">
-            <img src="${game.img}" alt="${game.title}" />
-            ${game.title}
-          </a>
-        `;
-        grid.appendChild(card);
-      }
-    }
-
-    searchInput.addEventListener("input", () => {
-      const category = document.querySelector(".filter-btn.active").dataset.category;
-      displayGames(category, searchInput.value);
-    });
-
-    filterButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        document.querySelector(".filter-btn.active").classList.remove("active");
-        button.classList.add("active");
-        displayGames(button.dataset.category, searchInput.value);
-      });
-    });
-
-    displayGames();
-      </a>
-      </div>
-    </div>
-  </main>
+</main>
+<footer>
+  &copy; 2025 GamesHub — All rights reserved
+</footer>
 </body>
 </html>
